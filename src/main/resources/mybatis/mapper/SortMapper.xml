@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="core.dao.SortDao">
+    <insert id="insertSort" parameterType="String">
+        insert into sort(name) values (#{name})
+    </insert>
+
+    <delete id="deleteSortById" parameterType="Integer">
+        delete from sort where id=#{id}
+    </delete>
+    <delete id="deleteSortByName" parameterType="String">
+        delete from sort where name=#{name}
+    </delete>
+
+    <resultMap id="sortList" type="Sort">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="create_time" column="create_time"/>
+    </resultMap>
+    <select id="findAllSort" resultMap="sortList">
+        select * from sort
+    </select>
+
+
+</mapper>

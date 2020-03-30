@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="core.dao.LoveDao">
+
+    <!-- 判断是否存在我喜欢-->
+    <select id="findLoveIsExistByImgIdAndUserNameAndSortName" resultType="String">
+        select 1 from love where img_id=#{img_id} and user_name=#{user_name} and sort_name=#{sort_name}
+    </select>
+    <!--添加我喜欢的-->
+    <insert id="insetLove" parameterType="Love">
+        insert into love(img_id, user_name, sort_name) values
+        (#{img_id},#{user_name},#{sort_name})
+    </insert>
+    <!--删除我喜欢的-->
+    <delete id="deleteLoveByImgIdAndUserNameAndSortName" >
+        delete from love where img_id=#{img_id} and user_name=#{user_name} and sort_name=#{sort_name}
+    </delete>
+
+    <!--查找我喜欢的图片id-->
+    <select id="findLoveByName" parameterType="String" resultType="Integer">
+        select img_id from love where user_name=#{user_name}
+    </select>
+    <!-- 删除喜欢的图片根据 单个img_id-->
+    <delete id="deleteLoveByImgId" parameterType="Integer">
+        delete from love where img_id=#{img_id}
+    </delete>
+    <!-- 删除喜欢的图片根据 多个img_id-->
+    <delete id="deleteManyImageByIds" parameterType="Integer">
+        delete from love where img_id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">#{id}</foreach>
+    </delete>
+    <!--根据类型删除喜欢-->
+    <delete id="deleteLoveBySortName" parameterType="String">
+         delete from love where sort_name=#{sort_name}
+    </delete>
+    <!--根据用户删除喜欢的-->
+    <delete id="deleteLoveByUserName" parameterType="String">
+        delete from love where user_name=#{user_name}
+    </delete>
+    <resultMap id="loveList" type="Love">
+        <id column="id" property="id"/>
+        <result column="img_id" property="img_id"/>
+        <result column="user_name" property="user_name"/>
+        <result column="sort_name" property="sort_name"/>
+        <result column="create_time" property="create_time"/>
+    </resultMap>
+</mapper>

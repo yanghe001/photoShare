@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="core.dao.UserDao">
+
+
+    <!--添加用户-->
+    <insert id="insertUser" parameterType="User">
+        insert into user(name,
+        <if test="password!=null">password, </if>
+        sex, birth_date, address)
+        values(#{name},
+        <if test="password!=null">#{password},</if>
+        #{sex},#{birth_date},#{address})
+    </insert>
+    <!--删除用户通过name-->
+    <delete id="deleteUserByName" parameterType="String">
+        delete from user where name=#{name}
+    </delete>
+    <!--批量删除用户name-->
+    <delete id="deleteManyUserByName">
+        delete from user where name in
+        <foreach collection="names" item="name" separator="," open="(" close=")">#{name}</foreach>
+    </delete>
+    <!-- 查询该账号是否存在-->
+    <select id="findUserIsExitByName" parameterType="String" resultType="String">
+        select 1 from user where name=#{name}
+    </select>
+    <!--查询用户通过name-->
+    <select id="findUserByName" parameterType="String" resultType="User">
+        select * from user where name = #{name}
+    </select>
+
+    <resultMap id="userList" type="User">
+        <id column="id" property="id"/>
+        <result column="number" property="number"/>
+        <result column="name" property="name"/>
+        <result column="password" property="password"/>
+        <result column="sex" property="sex"/>
+        <result column="birth_date" property="birth_date"/>
+        <result column="address" property="address"/>
+        <result column="type" property="type"/>
+        <result column="create_time" property="create_time"/>
+    </resultMap>
+    <!--分页查询-->
+    <select id="findAllUserByPage" resultMap="userList">
+        select * from user where type=1
+    </select>
+    <!--更新用户信息-->
+    <update id="updateUserByName" parameterType="User">
+        update user
+        <set>
+            <if test="password!=null">password=#{password},</if>
+            <if test="sex!=null">sex=#{sex},</if>
+            <if test="birth_date!=null">birth_date=#{birth_date},</if>
+            <if test="address!=null">address=#{address},</if>
+            name=#{name}
+        </set>
+        where name=#{name}
+    </update>
+    <!--重置用户密码-->
+    <update id="resetUserPassByName" parameterType="String">
+        update user set password='7516c04c34c57db8595b58e49e84e637' where name=#{name}
+    </update>
+</mapper>

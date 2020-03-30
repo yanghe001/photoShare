@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="core.dao.ImageDao">
+
+    <!--添加图片-->
+    <insert id="insertImage" parameterType="Image">
+        insert into image(url, sort_name, user_name) VALUES
+        (#{url},#{sort_name},#{user_name})
+    </insert>
+    <!--获取首页图片集 按照点赞排行 -->
+    <select id="findAllImageByOrderCountDESCPage" resultMap="imageList">
+        select * from image order by praise_count DESC
+    </select>
+    <!--根据分类获取该类推荐封面 按照点赞排行 -->
+    <select id="findImageBySortNamePraiseCountMax" parameterType="String" resultType="Image">
+        select * from image where  sort_name=#{sort_name} order by  praise_count DESC limit 1
+    </select>
+    <!--获取每个分类图片集 按照点赞排行 -->
+    <select id="findImageBySortNamePage" parameterType="String" resultMap="imageList">
+         select * from image where sort_name=#{sort_name} order by praise_count DESC
+    </select>
+    <!--获取用户每类图集封面 -->
+    <select id="findImageBySortNameAndUserNamePraiseCountMax" parameterType="String" resultType="Image">
+        select * from image where  sort_name=#{sort_name} and user_name=#{user_name} order by  praise_count DESC limit 1
+    </select>
+    <!-- 根据类型获取该用户图集-->
+    <select id="findImageListBySortNameAndUserNamePage" parameterType="String" resultMap="imageList">
+        select * from image where  sort_name=#{sort_name} and user_name=#{user_name} order by  praise_count DESC
+    </select>
+    <!--根据图片id删除图片-->
+    <delete id="deleteImageById" parameterType="Integer">
+        delete from image where id=#{id}
+    </delete>
+    <!-- 删除多个图片 根据ids-->
+    <delete id="deleteManyImageByIds" parameterType="ArrayList">
+        delete from image where id in
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">#{id}</foreach>
+    </delete>
+
+    <!--根据图片id查找图片路径-->
+    <select id="findImgPathsByIds" parameterType="ArrayList" resultType="String">
+        select url from image where id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">#{id}</foreach>
+    </select>
+   <!-- 根据类型删除图片-->
+    <delete id="deleteImageBySortName" parameterType="String">
+        delete from image where sort_name=#{sort_name}
+    </delete>
+    <!--获取用户所有图片的路径 删除图片-->
+    <select id="findUrlsByUserName" parameterType="String" resultType="String">
+        select url from image where user_name=#{user_name}
+    </select>
+    <!--获取用户所有图片的路径 删除图片-->
+    <select id="findUrlsBySortName" parameterType="String" resultType="String">
+        select url from image where sort_name=#{sort_name}
+    </select>
+    <!--删除用户时把图片删除-->
+    <delete id="deleteImageByUserName" parameterType="String">
+        delete from image where user_name=#{user_name}
+    </delete>
+
+
+    <resultMap id="imageList" type="Image">
+        <id property="id" column="id"/>
+        <result property="url" column="url"/>
+        <result property="sort_name" column="sort_name"/>
+        <result property="user_name" column="user_name"/>
+        <result property="praise_count" column="praise_count"/>
+        <result property="create_time" column="create_time"/>
+    </resultMap>
+    <select id="findAllImageByPage" resultMap="imageList">
+        select * from image
+    </select>
+    <!--查找所有图片 按点赞排行-->
+    <select id="findAllImagePage" resultMap="imageList">
+        select * from image order by praise_count DESC
+    </select>
+
+    <update id="updateImageById" parameterType="Image">
+        update image
+        <set>
+            <if test="url != null">url=#{url},</if>
+            <if test="sort_name != null">sort_name=#{sort_name},</if>
+            <if test="user_name != null">user_name=#{user_name},</if>
+            id=#{id}
+        </set>
+        where id=#{id}
+    </update>
+
+    <!--love 点赞-->
+    <update id="addPraiseImage" parameterType="Integer">
+        update image set praise_count=praise_count+1 where id=#{id}
+    </update>
+    <update id="delPraiseImage" parameterType="Integer">
+         update image set praise_count=praise_count-1 where id=#{id} and praise_count>0
+    </update>
+    <!--查找我喜欢的-->
+    <select id="findLoveImageByUserName" parameterType="ArrayList" resultMap="imageList">
+        select * from image where id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">#{id}</foreach>
+    </select>
+
+</mapper>
