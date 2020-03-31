@@ -1,7 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="93551dfa-4722-4ebb-8ee8-19370ddeb600" name="Default Changelist" comment="" />
+    <list default="true" id="93551dfa-4722-4ebb-8ee8-19370ddeb600" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/core/dao/DynamicCommentDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/core/dao/DynamicReplyDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/core/pojo/DynamicComment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/core/pojo/DynamicReply.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/core/service/DynamicCommentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/core/service/DynamicReplyService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/core/service/impl/DynamicCommentServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/core/service/impl/DynamicReplyServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/DynamicCommentMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/DynamuicReplyMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/core/dao/DynamicCommentDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/core/dao/DynamicReplyDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/core/pojo/DynamicComment.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/core/pojo/DynamicReply.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/core/service/DynamicCommentService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/core/service/DynamicReplyService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/core/service/impl/DynamicCommentServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/core/service/impl/DynamicReplyServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/mybatis/mapper/DynamicCommentMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/mybatis/mapper/DynamuicReplyMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/upload/images/jishi/1585575012197.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/upload/images/jishi/1585575012240.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3c7a91fc-054a-436d-9772-d3b18bb43458.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/3c7a91fc-054a-436d-9772-d3b18bb43458.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/controller/DynamicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/controller/DynamicController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/controller/ImageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/controller/ImageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/intercept/InterceptConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/intercept/InterceptConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/pojo/Dynamic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/pojo/Dynamic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/results/PageInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/results/PageInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/service/impl/DynamicServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/service/impl/DynamicServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/DynamicMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/DynamicMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/core/controller/DynamicController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/core/controller/DynamicController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/core/controller/ImageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/core/controller/ImageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/core/intercept/InterceptConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/core/intercept/InterceptConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/core/pojo/Dynamic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/core/pojo/Dynamic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/core/results/PageInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/core/results/PageInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/core/service/impl/DynamicServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/core/service/impl/DynamicServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/mapper/DynamicMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis/mapper/DynamicMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/upload/images/jishi/1584547445520.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/upload/images/jishi/1584547445552.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/upload/images/jishi/1584547445572.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/upload/images/jishi/1584547445612.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/upload/images/jishi/1584547445632.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/upload/images/jishi/1584547445652.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/upload/images/jishi/1584547526110.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/upload/images/jishi/1584547526171.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/upload/images/jishi/1584547526200.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/upload/images/jishi/1584547526230.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/upload/images/jishi/1584547526253.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/upload/images/jishi/1584547526290.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/upload/images/jishi/1585574303570.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/upload/dynamic/1585635424159.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/upload/images/jishi/1585574303618.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/upload/dynamic/1585635424167.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/upload/images/jishi/1585574303630.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/upload/images/jishi/1585575012249.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/upload/images/jishi/1585574303647.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/upload/images/jishi/1585575012259.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/upload/images/jishi/1585574303661.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/upload/images/jishi/1585575012271.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/upload/images/jishi/1585574303681.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/upload/images/jishi/1585575012283.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/upload/images/jishi/1585574303694.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/upload/images/jishi/1585575012295.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/upload/images/jishi/1585574303707.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/upload/images/jishi/1585575012305.jpg" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,14 +102,14 @@
         <item name="PhotoShare" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="yh001_bs_photoshare: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="sort: table" type="285a2a93:MysqlImplModel$Table" />
+        <item name="dynamic_comments: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="PhotoShare" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="yh001_bs_photoshare: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="user: table" type="285a2a93:MysqlImplModel$Table" />
+        <item name="dynamic_reply: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -62,6 +122,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="JRebelWorkspace">
     <option name="jrebelEnabledAutocompile" value="true" />
   </component>
@@ -73,6 +136,7 @@
     </option>
   </component>
   <component name="ProjectId" id="1Z3k0MCWXGu8n37TT1aV5K2riN8" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -85,12 +149,14 @@
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/mybatis/mapper" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../moive" />
     <property name="project.structure.last.edited" value="Facets" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.33679244" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -108,9 +174,9 @@
       <recent name="D:\WorkSpace\workspace\photoShare\src\main\java\core\dao" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="core.dao" />
       <recent name="core.utils" />
       <recent name="core.controller" />
-      <recent name="core.dao" />
       <recent name="core.plugin" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
@@ -251,6 +317,9 @@
       <workItem from="1585455065903" duration="3238000" />
       <workItem from="1585493221033" duration="49000" />
       <workItem from="1585573587577" duration="941000" />
+      <workItem from="1585574852306" duration="4208000" />
+      <workItem from="1585581514873" duration="222000" />
+      <workItem from="1585581803497" duration="18799000" />
     </task>
     <servers />
   </component>
@@ -274,10 +343,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="477" y="221" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1584363452092" />
-    <state x="574" y="120" key="#com.intellij.ide.util.MemberChooser" timestamp="1584605927167">
+    <state x="574" y="120" key="#com.intellij.ide.util.MemberChooser" timestamp="1585641601519">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="120" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1584605927167" />
+    <state x="574" y="120" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1585641601519" />
     <state x="531" y="200" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1584159708115">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -302,54 +371,58 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1584592503594" />
-    <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1584189636693">
+    <state x="304" y="7" key="CommitChangelistDialog2" timestamp="1585649894195">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1584189636693" />
-    <state width="1493" height="405" key="GridCell.Tab.0.bottom" timestamp="1585574535975">
+    <state x="304" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1585649894195" />
+    <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1585640122109">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="405" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585574535975" />
-    <state width="1493" height="405" key="GridCell.Tab.0.center" timestamp="1585574535975">
+    <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585640122109" />
+    <state width="1493" height="292" key="GridCell.Tab.0.bottom" timestamp="1585649894410">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="405" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585574535975" />
-    <state width="1493" height="405" key="GridCell.Tab.0.left" timestamp="1585574535975">
+    <state width="1493" height="292" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585649894410" />
+    <state width="1493" height="292" key="GridCell.Tab.0.center" timestamp="1585649894409">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="405" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585574535975" />
-    <state width="1493" height="405" key="GridCell.Tab.0.right" timestamp="1585574535975">
+    <state width="1493" height="292" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585649894409" />
+    <state width="1493" height="292" key="GridCell.Tab.0.left" timestamp="1585649894408">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="405" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585574535975" />
-    <state width="1493" height="405" key="GridCell.Tab.1.bottom" timestamp="1585574535975">
+    <state width="1493" height="292" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585649894408" />
+    <state width="1493" height="292" key="GridCell.Tab.0.right" timestamp="1585649894410">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="405" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585574535975" />
-    <state width="1493" height="405" key="GridCell.Tab.1.center" timestamp="1585574535975">
+    <state width="1493" height="292" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585649894410" />
+    <state width="1493" height="292" key="GridCell.Tab.1.bottom" timestamp="1585649894411">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="405" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1585574535975" />
-    <state width="1493" height="405" key="GridCell.Tab.1.left" timestamp="1585574535975">
+    <state width="1493" height="292" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585649894411" />
+    <state width="1493" height="292" key="GridCell.Tab.1.center" timestamp="1585649894410">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="405" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1585574535975" />
-    <state width="1493" height="405" key="GridCell.Tab.1.right" timestamp="1585574535975">
+    <state width="1493" height="292" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1585649894410" />
+    <state width="1493" height="292" key="GridCell.Tab.1.left" timestamp="1585649894410">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="405" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1585574535975" />
-    <state x="249" y="0" key="SettingsEditor" timestamp="1584167206854">
+    <state width="1493" height="292" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1585649894410" />
+    <state width="1493" height="292" key="GridCell.Tab.1.right" timestamp="1585649894411">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1584167206854" />
+    <state width="1493" height="292" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1585649894411" />
+    <state x="249" y="0" key="SettingsEditor" timestamp="1585644409785">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1585644409785" />
     <state x="93" y="93" width="1350" height="638" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1584543722358">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1584543722358" />
-    <state x="461" y="241" key="com.intellij.ide.util.TipDialog" timestamp="1585493268671">
+    <state x="461" y="241" key="com.intellij.ide.util.TipDialog" timestamp="1585581805756">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="461" y="241" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1585493268671" />
+    <state x="461" y="241" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1585581805756" />
     <state x="257" y="5" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1584351709183">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -362,9 +435,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="41" y="190" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1584538311250" />
-    <state x="814" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1584589812114">
+    <state x="814" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1585643505239">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="814" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1584589812114" />
+    <state x="814" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1585643505239" />
   </component>
 </project>

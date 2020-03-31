@@ -22,7 +22,7 @@
         <result column="create_time" property="create_time"/>
     </resultMap>
     <!--获取用户动态 -->
-    <select id="findDynamicByUserNamePage"  resultMap="dynamicList">
+    <select id="findDynamicByUserNamePage" parameterType="String"  resultMap="dynamicList">
         select * from dynamic where user_name=#{user_name} order by create_time DESC
     </select>
 

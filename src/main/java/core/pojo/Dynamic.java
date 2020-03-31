@@ -18,6 +18,7 @@ public class Dynamic  implements Serializable {
     private Date create_time;
     private boolean flag; //判断是否点赞
     private List<String> imageUrlList; //展示图片 改成集合展示
+    private List<DynamicComment> dynamicCommentList; //动态下的评论集合
 
     @Override
     public String toString() {
@@ -30,7 +31,16 @@ public class Dynamic  implements Serializable {
                 ", create_time=" + create_time +
                 ", flag=" + flag +
                 ", imageUrlList=" + imageUrlList +
+                ", dynamicCommentList=" + dynamicCommentList +
                 '}';
+    }
+
+    public List<DynamicComment> getDynamicCommentList() {
+        return dynamicCommentList;
+    }
+
+    public void setDynamicCommentList(List<DynamicComment> dynamicCommentList) {
+        this.dynamicCommentList = dynamicCommentList;
     }
 
     public List<String> getImageUrlList() {

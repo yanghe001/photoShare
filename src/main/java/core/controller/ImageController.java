@@ -69,12 +69,12 @@ public class ImageController {
             String newFolder=imagesPath+FileUntil.chinaToEnglish(sort_name)+"/"+newFileName;
             if(!imageType.contains(fileSuffix)){
                 imgTypeError=imgTypeError+originalFilename+" ";
-                break;
+                continue;
             }
             String path=FileUntil.createFolderAndUploadFile(multipartFile,newFolder);
             if(path.equals("")||path==null){
                 uploadFileError=uploadFileError+originalFilename+" ";
-                break;
+                continue;
             }
             Image image=new Image();
             image.setUrl(path);

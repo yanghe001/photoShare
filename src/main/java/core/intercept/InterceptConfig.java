@@ -14,6 +14,7 @@ public class InterceptConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/doLogin","/login",
                         "/user/insertUser","/image/find*",
                         "/skill/find*",
+                        "/dynamic/findAllDynamic","/dynamic/insertComment","/dynamic/insertReply","/dynamic/addOrDelPrise",
                         "/**/*.css","/**/*.js", "/**/*.png", "/**/*.jpg",
                         "/**/*.jpeg", "/**/*.gif", "/**/fonts/*");//不拦截登录，和HTML样式
 
