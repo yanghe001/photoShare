@@ -33,11 +33,11 @@
 
     <!--更改点赞数量 - -->
     <update id="updateDelDynamicPraiseCount" >
-        update dynamic set praise_counts=praise_counts-1 where user_name=#{user_name} and id=#{id} and praise_counts>0
+        update dynamic set praise_counts=praise_counts-1 where  id=#{id} and praise_counts>0
     </update>
     <!--更改点赞数量 + -->
     <update id="updateAddDynamicPraiseCount" >
-        update dynamic set praise_counts=praise_counts+1 where user_name=#{user_name} and id=#{id}
+        update dynamic set praise_counts=praise_counts+1 where  id=#{id}
     </update>
 
 

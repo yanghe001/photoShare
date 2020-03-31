@@ -2,14 +2,14 @@ package core.pojo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import java.io.Serializable;
 import java.util.Date;
 
 public class Skill implements Serializable {
     private int id;
-    private String url;
-    private String sort_name;
+    private String title;
+    private String image_url;
+    private String skill_url;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+08")
     private Date create_time;
@@ -18,8 +18,9 @@ public class Skill implements Serializable {
     public String toString() {
         return "Skill{" +
                 "id=" + id +
-                ", url='" + url + '\'' +
-                ", sort_name='" + sort_name + '\'' +
+                ", title='" + title + '\'' +
+                ", image_url='" + image_url + '\'' +
+                ", skill_url='" + skill_url + '\'' +
                 ", create_time=" + create_time +
                 '}';
     }
@@ -28,14 +29,17 @@ public class Skill implements Serializable {
         return id;
     }
 
-    public String getUrl() {
-        return url;
+    public String getTitle() {
+        return title;
     }
 
-    public String getSort_name() {
-        return sort_name;
+    public String getImage_url() {
+        return image_url;
     }
 
+    public String getSkill_url() {
+        return skill_url;
+    }
 
     public Date getCreate_time() {
         return create_time;
@@ -45,12 +49,16 @@ public class Skill implements Serializable {
         this.id = id;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public void setSort_name(String sort_name) {
-        this.sort_name = sort_name;
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
+    }
+
+    public void setSkill_url(String skill_url) {
+        this.skill_url = skill_url;
     }
 
     public void setCreate_time(Date create_time) {

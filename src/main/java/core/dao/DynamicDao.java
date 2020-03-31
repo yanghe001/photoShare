@@ -26,8 +26,8 @@ public interface DynamicDao {
 
 
     //更改点赞数量 -
-    int updateDelDynamicPraiseCount(String user_name, Integer id);
+    int updateDelDynamicPraiseCount(Integer id);
 
     //更改点赞数量 +
-    int updateAddDynamicPraiseCount(String user_name, Integer dynamic_id);
+    int updateAddDynamicPraiseCount(Integer id);
 }

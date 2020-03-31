@@ -94,8 +94,14 @@ public class DynamicController {
         System.out.println(pageInfo);
         User user=(User)req.getSession().getAttribute("user");
         List<Dynamic> dynamics=dynamicService.findDynamicByUserNamePage(user.getName(),pageInfo);
-        for(Dynamic dynamic : dynamics){
-            dynamic.setDynamicCommentList(commentsTool(dynamic.getId()));
+        if(dynamics!=null){
+            for(Dynamic dynamic : dynamics){
+                dynamic.setDynamicCommentList(commentsTool(dynamic.getId()));
+            }
+            PageResult<Dynamic> dynamicPageResult=new PageResult<>();
+            dynamicPageResult.setPageInfo(pageInfo);
+            dynamicPageResult.setRow(dynamics);
+            return dynamicPageResult;
         }
         PageResult<Dynamic> dynamicPageResult=new PageResult<>();
         dynamicPageResult.setPageInfo(pageInfo);
@@ -135,7 +141,7 @@ public class DynamicController {
      * @return
      */
     @RequestMapping(value = "/addOrDelPrise",method = RequestMethod.POST)
-    public CodeMsg addOrDelPraise(HttpServletRequest req,@RequestParam("id") Integer id){
+    public CodeMsg addOrDelPraise(HttpServletRequest req,Integer id){
         if(req.getSession().getAttribute("user")!=null){
             User user=(User)req.getSession().getAttribute("user");
             return dynamicLoveService.addOrDelDynamicLove(user.getName(),id)? CodeMsg.SUCCESS: CodeMsg.ERROR;

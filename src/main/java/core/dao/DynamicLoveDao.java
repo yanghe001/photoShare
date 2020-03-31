@@ -17,7 +17,9 @@ public interface DynamicLoveDao {
     DynamicLove findIsExistDynamicLove(String user_name, Integer dynamic_id);
 
     //记录点赞/或者取消点赞
-    int updateDynamicLove(String user_name, Integer dynamic_id);
+    int updateAddDynamicLove(String user_name, Integer dynamic_id);
+
+    int updateDelDynamicLove(String user_name, Integer dynamic_id);
 
     //删除点赞通过动态id
     int deleteDynamicLoveByDynamicId(Integer dynamic_id);

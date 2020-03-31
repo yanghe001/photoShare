@@ -13,7 +13,7 @@ public class InterceptConfig implements WebMvcConfigurer {
                 .addPathPatterns("/**")     //拦截请求
                 .excludePathPatterns("/doLogin","/login",
                         "/user/insertUser","/image/find*",
-                        "/skill/find*",
+                        "/skill/findAllSkill",
                         "/dynamic/findAllDynamic","/dynamic/insertComment","/dynamic/insertReply","/dynamic/addOrDelPrise",
                         "/**/*.css","/**/*.js", "/**/*.png", "/**/*.jpg",
                         "/**/*.jpeg", "/**/*.gif", "/**/fonts/*");//不拦截登录，和HTML样式

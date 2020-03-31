@@ -5,43 +5,33 @@
 <mapper namespace="core.dao.SkillDao">
    <!-- 添加上传技巧-->
     <insert id="insertSkill" parameterType="Skill">
-        insert into skill(url, sort_name) values(#{url},#{sort_name})
+        insert into skill(title, image_url, skill_url) VALUES (#{title},#{image_url},#{skill_url})
     </insert>
    <!-- 删除上传技巧-->
     <delete id="deleteSkillById" parameterType="Integer">
         delete from skill where id=#{id}
     </delete>
-    <!--根据分类删除技巧-->
-    <delete id="deleteSkillBySortName" parameterType="String">
-        delete from skill where sort_name=#{sort_name}
-    </delete>
-    <!--根据分类获取技巧集-->
-    <select id="findSkillListBySortName" parameterType="String" resultMap="skillList">
-        select * from skill where sort_name=#{sort_name} order by create_time DESC
-    </select>
+
+    <resultMap id="skillList" type="Skill">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="image_url" property="image_url"/>
+        <result column="skill_url" property="skill_url"/>
+        <result column="create_time" property="create_time"/>
+    </resultMap>
     <!--获取所有技巧集-->
     <select id="findAllSkill" resultMap="skillList">
         select * from skill
     </select>
-    <resultMap id="skillList" type="Skill">
-        <id column="id" property="id"/>
-        <result column="title" property="title"/>
-        <result column="text" property="text"/>
-        <result column="img_url" property="img_url"/>
-        <result column="sort_name" property="sort_name"/>
-        <result column="create_by" property="create_by"/>
-        <result column="create_time" property="create_time"/>
-    </resultMap>
+
 
     <!--更新技巧信息-->
     <update id="updateSkillById" parameterType="Skill">
         update skill
         <set>
             <if test="title!=null">title=#{title},</if>
-            <if test="text!=null">text=#{text},</if>
-            <if test="img_url!=null">img_url=#{img_url},</if>
-            <if test="sort_name!=null">sort_name=#{sort_name},</if>
-            <if test="create_by!=null">create_by=#{create_by},</if>
+            <if test="image_url!=null">image_url=#{image_url},</if>
+            <if test="skill_url!=null">skill_url=#{skill_url},</if>
             id=#{id}
         </set>
         where id=#{id}

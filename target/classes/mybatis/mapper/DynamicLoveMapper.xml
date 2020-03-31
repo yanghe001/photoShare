@@ -15,11 +15,12 @@
     </select>
 
     <!-- 记录点赞/或者取消点赞-->
-    <update id="updateDynamicLove">
-        update dynamic_love
-        <if test="flag==0">set flag=1</if>
-        <if test="flag==1">set flag=0</if>
-        where user_name=#{user_name} and dynamic_id=#{dynamic_id}
+    <update id="updateAddDynamicLove">
+        update dynamic_love set flag=1  where user_name=#{user_name} and dynamic_id=#{dynamic_id}
+    </update>
+    <!-- 记录点赞/或者取消点赞-->
+    <update id="updateDelDynamicLove">
+        update dynamic_love set flag=0 where user_name=#{user_name} and dynamic_id=#{dynamic_id}
     </update>
 
    <!-- 删除点赞通过动态id-->

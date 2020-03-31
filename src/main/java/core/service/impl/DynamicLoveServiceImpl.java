@@ -21,13 +21,14 @@ public class DynamicLoveServiceImpl implements DynamicLoveService {
             DynamicLove dynamicLove=dynamicLoveDao.findIsExistDynamicLove(user_name,dynamic_id);
             int flag=dynamicLove.getFlag();
             if(flag==0){
-                dynamicDao.updateAddDynamicPraiseCount(user_name,dynamic_id);
+                dynamicDao.updateAddDynamicPraiseCount(dynamic_id);
+                result=dynamicLoveDao.updateAddDynamicLove(user_name,dynamic_id);
             }else{
-                dynamicDao.updateDelDynamicPraiseCount(user_name,dynamic_id);
+                dynamicDao.updateDelDynamicPraiseCount(dynamic_id);
+                result= dynamicLoveDao.updateDelDynamicLove(user_name,dynamic_id);
             }
-            result=dynamicLoveDao.updateDynamicLove(user_name,dynamic_id);
         }else{
-            dynamicDao.updateAddDynamicPraiseCount(user_name,dynamic_id);
+            dynamicDao.updateAddDynamicPraiseCount(dynamic_id);
             DynamicLove dynamicLove=new DynamicLove();
             dynamicLove.setUser_name(user_name);
             dynamicLove.setDynamic_id(dynamic_id);
