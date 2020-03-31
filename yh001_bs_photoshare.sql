@@ -11,11 +11,117 @@
  Target Server Version : 50727
  File Encoding         : 65001
 
- Date: 29/03/2020 23:48:34
+ Date: 31/03/2020 22:07:52
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for dynamic
+-- ----------------------------
+DROP TABLE IF EXISTS `dynamic`;
+CREATE TABLE `dynamic`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '动态自增id',
+  `user_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户名',
+  `content` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '文字介绍',
+  `images` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '推片链接 ，分割',
+  `praise_counts` int(11) NULL DEFAULT 0 COMMENT '点赞数量统计',
+  `create_time` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '记录创建时间',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dynamic
+-- ----------------------------
+INSERT INTO `dynamic` VALUES (1, '111', '太好看了吧', 'upload/dynamic/1585635424159.jpg,upload/dynamic/1585635424167.jpeg', 2, '2020-03-30 23:54:48');
+INSERT INTO `dynamic` VALUES (3, '111', '杨贺大傻吊', 'upload/dynamic/1585635424159.jpg,upload/dynamic/1585635424167.jpeg', 2, '2020-03-31 14:17:04');
+INSERT INTO `dynamic` VALUES (4, '李大艺', '真帅气', 'upload/dynamic/1585651229994.jpg,upload/dynamic/1585651231650.jpg,upload/dynamic/1585651231655.jpg,upload/dynamic/1585651231661.jpg,upload/dynamic/1585651231666.jpg,upload/dynamic/1585651231671.jpg', 3, '2020-03-31 18:40:31');
+
+-- ----------------------------
+-- Table structure for dynamic_comments
+-- ----------------------------
+DROP TABLE IF EXISTS `dynamic_comments`;
+CREATE TABLE `dynamic_comments`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT ' 评论主键自增id',
+  `dynamic_id` int(11) NULL DEFAULT NULL COMMENT '评论动态id',
+  `content` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '评论内容',
+  `from_user` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '评论用户(存储用户名)',
+  `identify_id` tinyint(1) NULL DEFAULT 0 COMMENT '用户区分评论类型',
+  `create_time` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '记录创建时间',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dynamic_comments
+-- ----------------------------
+INSERT INTO `dynamic_comments` VALUES (1, 1, '真是的', '1', 0, '2020-03-30 21:59:25');
+INSERT INTO `dynamic_comments` VALUES (2, 1, '使得', '2', 0, '2020-03-31 00:17:01');
+INSERT INTO `dynamic_comments` VALUES (3, 3, '李小艺才是呢', '111', 0, '2020-03-31 15:37:52');
+INSERT INTO `dynamic_comments` VALUES (4, 3, '发发发', '1', 0, '2020-03-31 16:54:52');
+INSERT INTO `dynamic_comments` VALUES (5, 4, '没有杨贺帅', '李大艺', 0, '2020-03-31 18:41:57');
+INSERT INTO `dynamic_comments` VALUES (6, 4, '早上好啊', '李1', 0, '2020-03-31 19:02:57');
+
+-- ----------------------------
+-- Table structure for dynamic_love
+-- ----------------------------
+DROP TABLE IF EXISTS `dynamic_love`;
+CREATE TABLE `dynamic_love`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '动态点赞自增id',
+  `dynamic_id` int(11) NULL DEFAULT NULL COMMENT '动态id',
+  `user_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户名',
+  `flag` int(1) NULL DEFAULT 1 COMMENT '是否点赞 （0 取消赞  1点赞）',
+  `create_time` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '记录创建时间',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dynamic_love
+-- ----------------------------
+INSERT INTO `dynamic_love` VALUES (1, 4, '李大艺', 1, '2020-03-31 18:41:10');
+INSERT INTO `dynamic_love` VALUES (2, 3, '李大艺', 1, '2020-03-31 18:42:23');
+INSERT INTO `dynamic_love` VALUES (3, 1, '李大艺', 1, '2020-03-31 18:42:29');
+INSERT INTO `dynamic_love` VALUES (4, 4, '111', 1, '2020-03-31 18:42:53');
+INSERT INTO `dynamic_love` VALUES (5, 3, '111', 1, '2020-03-31 18:43:05');
+INSERT INTO `dynamic_love` VALUES (6, 1, '111', 1, '2020-03-31 18:43:29');
+INSERT INTO `dynamic_love` VALUES (7, 4, '李1', 1, '2020-03-31 19:02:43');
+
+-- ----------------------------
+-- Table structure for dynamic_reply
+-- ----------------------------
+DROP TABLE IF EXISTS `dynamic_reply`;
+CREATE TABLE `dynamic_reply`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '回复表自增id',
+  `comment_id` int(11) NOT NULL COMMENT '评论id',
+  `dynamic_id` int(11) NOT NULL COMMENT '动态id',
+  `reply_type` tinyint(1) NOT NULL COMMENT '0 针对评论表  1针对回复表',
+  `content` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '回复内容',
+  `from_user` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '回复人(存储用户名)',
+  `to_user` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '回复目标人(存储用户名)',
+  `identify_id` tinyint(1) NULL DEFAULT 1 COMMENT '用户区分评论类型',
+  `create_time` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '该记录创建时间',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dynamic_reply
+-- ----------------------------
+INSERT INTO `dynamic_reply` VALUES (1, 1, 1, 0, '你好', '2', '1', 1, '2020-03-30 22:00:20');
+INSERT INTO `dynamic_reply` VALUES (2, 1, 1, 1, '你也好啊', '3', '2', 1, '2020-03-30 22:18:50');
+INSERT INTO `dynamic_reply` VALUES (3, 2, 1, 1, '都好啊', '2', '3', 1, '2020-03-30 22:20:12');
+INSERT INTO `dynamic_reply` VALUES (4, 1, 1, 0, '挺好的', '20', '1', 1, '2020-03-31 00:13:07');
+INSERT INTO `dynamic_reply` VALUES (5, 4, 1, 1, '都是挺好', '21', '20', 1, '2020-03-31 00:13:44');
+INSERT INTO `dynamic_reply` VALUES (6, 4, 1, 1, '咱们都好', '22', '20', 1, '2020-03-31 00:14:10');
+INSERT INTO `dynamic_reply` VALUES (7, 22, 2, 0, '一起冲浪啊', '2', '1', 1, '2020-03-31 00:14:43');
+INSERT INTO `dynamic_reply` VALUES (8, 2, 1, 0, 'a安定', '22', '2', 1, '2020-03-31 00:17:53');
+INSERT INTO `dynamic_reply` VALUES (9, 3, 3, 0, '丰富房地产', '1', '111', 1, '2020-03-31 17:20:42');
+INSERT INTO `dynamic_reply` VALUES (10, 4, 3, 0, '发过', '1', '1', 1, '2020-03-31 17:20:51');
+INSERT INTO `dynamic_reply` VALUES (11, 1, 1, 0, '滚滚滚', '1', '1', 1, '2020-03-31 17:21:04');
+INSERT INTO `dynamic_reply` VALUES (12, 1, 1, 0, '急急急', '1', '1', 1, '2020-03-31 17:21:27');
+INSERT INTO `dynamic_reply` VALUES (13, 4, 1, 1, '啦啦啦', '1', '20', 1, '2020-03-31 17:25:06');
+INSERT INTO `dynamic_reply` VALUES (14, 9, 3, 1, '啦啦啦', '李大艺', '1', 1, '2020-03-31 17:29:43');
+INSERT INTO `dynamic_reply` VALUES (15, 3, 3, 0, '回家，即', '李大艺', '111', 1, '2020-03-31 17:31:01');
+INSERT INTO `dynamic_reply` VALUES (16, 5, 4, 0, '那可不', '111', '李大艺', 1, '2020-03-31 18:43:00');
 
 -- ----------------------------
 -- Table structure for image
@@ -29,17 +135,11 @@ CREATE TABLE `image`  (
   `praise_count` int(11) NULL DEFAULT 0 COMMENT '点赞量',
   `create_time` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 170 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 214 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of image
 -- ----------------------------
-INSERT INTO `image` VALUES (1, 'upload/images/jishi/1584547445520.jpg', '纪实', '111', 0, '2020-03-19 00:04:05');
-INSERT INTO `image` VALUES (2, 'upload/images/jishi/1584547445552.jpg', '纪实', '111', 0, '2020-03-19 00:04:05');
-INSERT INTO `image` VALUES (3, 'upload/images/jishi/1584547445572.jpg', '纪实', '111', 0, '2020-03-19 00:04:05');
-INSERT INTO `image` VALUES (5, 'upload/images/jishi/1584547445612.jpg', '纪实', '111', 0, '2020-03-19 00:04:05');
-INSERT INTO `image` VALUES (6, 'upload/images/jishi/1584547445632.jpg', '纪实', '111', 0, '2020-03-19 00:04:05');
-INSERT INTO `image` VALUES (7, 'upload/images/jishi/1584547445652.jpg', '纪实', '111', 0, '2020-03-19 00:04:05');
 INSERT INTO `image` VALUES (8, 'upload/images/zhuapai/1584547467259.jpg', '抓拍', '111', 0, '2020-03-19 00:04:27');
 INSERT INTO `image` VALUES (9, 'upload/images/zhuapai/1584547467285.jpg', '抓拍', '111', 0, '2020-03-19 00:04:27');
 INSERT INTO `image` VALUES (10, 'upload/images/zhuapai/1584547467308.jpg', '抓拍', '111', 0, '2020-03-19 00:04:27');
@@ -47,12 +147,6 @@ INSERT INTO `image` VALUES (12, 'upload/images/zhuapai/1584547467344.jpg', '抓�
 INSERT INTO `image` VALUES (13, 'upload/images/zhuapai/1584547467359.jpg', '抓拍', '111', 0, '2020-03-19 00:04:27');
 INSERT INTO `image` VALUES (14, 'upload/images/zhuapai/1584547467377.jpg', '抓拍', '111', 0, '2020-03-19 00:04:27');
 INSERT INTO `image` VALUES (15, 'upload/images/zhuapai/1584547467393.jpg', '抓拍', '111', 0, '2020-03-19 00:04:27');
-INSERT INTO `image` VALUES (16, 'upload/images/jishi/1584547526110.jpg', '纪实', '111', 0, '2020-03-19 00:05:26');
-INSERT INTO `image` VALUES (17, 'upload/images/jishi/1584547526171.jpg', '纪实', '111', 0, '2020-03-19 00:05:26');
-INSERT INTO `image` VALUES (18, 'upload/images/jishi/1584547526200.jpg', '纪实', '111', 0, '2020-03-19 00:05:26');
-INSERT INTO `image` VALUES (19, 'upload/images/jishi/1584547526230.jpg', '纪实', '111', 0, '2020-03-19 00:05:26');
-INSERT INTO `image` VALUES (20, 'upload/images/jishi/1584547526253.jpg', '纪实', '111', 0, '2020-03-19 00:05:26');
-INSERT INTO `image` VALUES (21, 'upload/images/jishi/1584547526290.jpg', '纪实', '111', 0, '2020-03-19 00:05:26');
 INSERT INTO `image` VALUES (22, 'upload/images/zipai/1584547532387.jpg', '自拍', '111', 1, '2020-03-19 00:05:32');
 INSERT INTO `image` VALUES (23, 'upload/images/zipai/1584547532407.jpeg', '自拍', '111', 1, '2020-03-19 00:05:32');
 INSERT INTO `image` VALUES (24, 'upload/images/zipai/1584547532417.jpg', '自拍', '111', 1, '2020-03-19 00:05:32');
@@ -199,6 +293,42 @@ INSERT INTO `image` VALUES (166, 'upload/images/fengjing/1584547758360.png', '�
 INSERT INTO `image` VALUES (167, 'upload/images/fengjing/1584547758370.png', '风景', '111', 0, '2020-03-19 00:09:18');
 INSERT INTO `image` VALUES (168, 'upload/images/fengjing/1584547758381.png', '风景', '111', 0, '2020-03-19 00:09:18');
 INSERT INTO `image` VALUES (169, 'upload/images/zipai/1585296612528.png', '自拍', '111', 0, '2020-03-27 16:10:12');
+INSERT INTO `image` VALUES (170, 'upload/images/jiepai/1585572762519.jpg', '街拍', '111', 0, '2020-03-30 20:52:42');
+INSERT INTO `image` VALUES (171, 'upload/images/jiepai/1585572835197.jpg', '街拍', '111', 0, '2020-03-30 20:53:55');
+INSERT INTO `image` VALUES (172, 'upload/images/jiepai/1585572972390.jpg', '街拍', '111', 0, '2020-03-30 20:56:12');
+INSERT INTO `image` VALUES (173, 'upload/images/zipai/1585573061962.jpg', '自拍', '111', 0, '2020-03-30 20:57:41');
+INSERT INTO `image` VALUES (174, 'upload/images/zipai/1585573303169.jpg', '自拍', '111', 0, '2020-03-30 21:01:43');
+INSERT INTO `image` VALUES (175, 'upload/images/zipai/1585573303235.jpeg', '自拍', '111', 0, '2020-03-30 21:01:43');
+INSERT INTO `image` VALUES (176, 'upload/images/zipai/1585573303251.jpg', '自拍', '111', 0, '2020-03-30 21:01:43');
+INSERT INTO `image` VALUES (177, 'upload/images/zipai/1585573303265.jpg', '自拍', '111', 0, '2020-03-30 21:01:43');
+INSERT INTO `image` VALUES (178, 'upload/images/zipai/1585573303283.jpg', '自拍', '111', 0, '2020-03-30 21:01:43');
+INSERT INTO `image` VALUES (179, 'upload/images/zipai/1585573303302.jpg', '自拍', '111', 0, '2020-03-30 21:01:43');
+INSERT INTO `image` VALUES (180, 'upload/images/zipai/1585573303319.jpg', '自拍', '111', 0, '2020-03-30 21:01:43');
+INSERT INTO `image` VALUES (181, 'upload/images/zipai/1585573303334.jpg', '自拍', '111', 0, '2020-03-30 21:01:43');
+INSERT INTO `image` VALUES (182, 'upload/images/zipai/1585573546075.jpg', '自拍', '111', 0, '2020-03-30 21:05:46');
+INSERT INTO `image` VALUES (183, 'upload/images/zipai/1585573546142.jpeg', '自拍', '111', 0, '2020-03-30 21:05:46');
+INSERT INTO `image` VALUES (184, 'upload/images/zipai/1585573546160.jpg', '自拍', '111', 0, '2020-03-30 21:05:46');
+INSERT INTO `image` VALUES (185, 'upload/images/zipai/1585573546176.jpg', '自拍', '111', 0, '2020-03-30 21:05:46');
+INSERT INTO `image` VALUES (186, 'upload/images/zipai/1585573546198.jpg', '自拍', '111', 0, '2020-03-30 21:05:46');
+INSERT INTO `image` VALUES (187, 'upload/images/zipai/1585573546218.jpg', '自拍', '111', 0, '2020-03-30 21:05:46');
+INSERT INTO `image` VALUES (188, 'upload/images/zipai/1585573546235.jpg', '自拍', '111', 0, '2020-03-30 21:05:46');
+INSERT INTO `image` VALUES (189, 'upload/images/zipai/1585573546254.jpg', '自拍', '111', 0, '2020-03-30 21:05:46');
+INSERT INTO `image` VALUES (190, 'upload/images/lvyou/1585574084451.jpg', '旅游', '111', 0, '2020-03-30 21:14:44');
+INSERT INTO `image` VALUES (191, 'upload/images/lvyou/1585574084526.jpeg', '旅游', '111', 0, '2020-03-30 21:14:44');
+INSERT INTO `image` VALUES (192, 'upload/images/lvyou/1585574084544.jpg', '旅游', '111', 0, '2020-03-30 21:14:44');
+INSERT INTO `image` VALUES (193, 'upload/images/lvyou/1585574084562.jpg', '旅游', '111', 0, '2020-03-30 21:14:44');
+INSERT INTO `image` VALUES (194, 'upload/images/lvyou/1585574084579.jpg', '旅游', '111', 0, '2020-03-30 21:14:44');
+INSERT INTO `image` VALUES (195, 'upload/images/lvyou/1585574084597.jpg', '旅游', '111', 0, '2020-03-30 21:14:44');
+INSERT INTO `image` VALUES (196, 'upload/images/lvyou/1585574084614.jpg', '旅游', '111', 0, '2020-03-30 21:14:46');
+INSERT INTO `image` VALUES (197, 'upload/images/lvyou/1585574086343.jpg', '旅游', '111', 0, '2020-03-30 21:14:46');
+INSERT INTO `image` VALUES (206, 'upload/images/jishi/1585575012197.jpg', '纪实', '111', 0, '2020-03-30 21:30:12');
+INSERT INTO `image` VALUES (207, 'upload/images/jishi/1585575012240.jpeg', '纪实', '111', 0, '2020-03-30 21:30:12');
+INSERT INTO `image` VALUES (208, 'upload/images/jishi/1585575012249.jpg', '纪实', '111', 0, '2020-03-30 21:30:12');
+INSERT INTO `image` VALUES (209, 'upload/images/jishi/1585575012259.jpg', '纪实', '111', 0, '2020-03-30 21:30:12');
+INSERT INTO `image` VALUES (210, 'upload/images/jishi/1585575012271.jpg', '纪实', '111', 0, '2020-03-30 21:30:12');
+INSERT INTO `image` VALUES (211, 'upload/images/jishi/1585575012283.jpg', '纪实', '111', 0, '2020-03-30 21:30:12');
+INSERT INTO `image` VALUES (212, 'upload/images/jishi/1585575012295.jpg', '纪实', '111', 0, '2020-03-30 21:30:12');
+INSERT INTO `image` VALUES (213, 'upload/images/jishi/1585575012305.jpg', '纪实', '111', 0, '2020-03-30 21:30:12');
 
 -- ----------------------------
 -- Table structure for love
@@ -233,21 +363,22 @@ INSERT INTO `love` VALUES (15, 23, '111', '自拍', '2020-03-19 18:58:46');
 DROP TABLE IF EXISTS `skill`;
 CREATE TABLE `skill`  (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '技巧自增id',
-  `url` varchar(2000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '图片地址',
-  `sort_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '分类名',
+  `title` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '介绍',
+  `image_url` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '图片链接',
+  `skill_url` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '图片地址',
   `create_time` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of skill
 -- ----------------------------
-INSERT INTO `skill` VALUES (1, 'https://baijiahao.baidu.com/s?id=1641920666607287269&wfr=spider&for=pc', '自拍', '2020-03-19 16:32:20');
-INSERT INTO `skill` VALUES (2, 'http://www.fsbus.com/sheyingjiqiao/20369.html', '街拍', '2020-03-27 16:18:44');
-INSERT INTO `skill` VALUES (3, 'http://www.360doc.com/content/16/0628/07/30242571_571290649.shtml', '纪实', '2020-03-27 16:19:25');
-INSERT INTO `skill` VALUES (4, 'https://baijiahao.baidu.com/s?id=1608329023841545576&wfr=spider&for=pc', '旅游', '2020-03-27 16:19:59');
-INSERT INTO `skill` VALUES (5, 'https://baijiahao.baidu.com/s?id=1610599732497579720&wfr=spider&for=pc', '风景', '2020-03-27 16:20:07');
-INSERT INTO `skill` VALUES (6, 'https://www.sohu.com/a/259543871_99948670', '抓拍', '2020-03-27 16:20:16');
+INSERT INTO `skill` VALUES (2, '自拍技巧，记住这12种拍照姿势，拍出上镜好看自拍照', 'upload/skill/zipai.jpg', 'http://www.fsbus.com/sheyingjiqiao/20369.html', '2020-03-27 16:18:44');
+INSERT INTO `skill` VALUES (3, '纪实拍摄技巧', 'upload/skill/1585663141307.jpg', 'http://www.360doc.com/content/16/0628/07/30242571_571290649.shtml', '2020-03-27 16:19:25');
+INSERT INTO `skill` VALUES (4, '旅行必备几个小技巧', 'upload/skill/lvyou.jpg', 'https://baijiahao.baidu.com/s?id=1608329023841545576&wfr=spider&for=pc', '2020-03-27 16:19:59');
+INSERT INTO `skill` VALUES (5, '八个风光摄影技巧，助你拍出风光大片', 'upload/skill/fengjing.jpeg', 'https://baijiahao.baidu.com/s?id=1610599732497579720&wfr=spider&for=pc', '2020-03-27 16:20:07');
+INSERT INTO `skill` VALUES (6, '摄影抓拍9个技巧', 'upload/skill/zhuapai.jpg', 'https://www.sohu.com/a/259543871_99948670', '2020-03-27 16:20:16');
+INSERT INTO `skill` VALUES (9, '绝美的自拍教程', 'upload/skill/1585662636437.jpg', 'https://zhuanlan.zhihu.com/p/77190151', '2020-03-31 21:50:36');
 
 -- ----------------------------
 -- Table structure for sort
@@ -289,19 +420,19 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (3, '李小艺', '7516c04c34c57db8595b58e49e84e637', '女', '2020-03-17', NULL, '2', '2020-03-14 15:27:01');
-INSERT INTO `user` VALUES (4, '李大艺', '7516c04c34c57db8595b58e49e84e637', '女', '2020-02-01', NULL, '1', '2020-03-14 15:31:48');
-INSERT INTO `user` VALUES (16, '杨小贺', '7516c04c34c57db8595b58e49e84e637', '男', NULL, NULL, '1', '2020-03-16 15:27:11');
-INSERT INTO `user` VALUES (18, '111', '8d4bae510248b84723d476020ee5c38d', '女', '2020-03-16', '呼呼呼呼', '1', '2020-03-18 13:08:35');
-INSERT INTO `user` VALUES (24, '222', '423275795f866bd2f762ff8a7742dbb9', '', NULL, '', '1', '2020-03-19 10:45:44');
-INSERT INTO `user` VALUES (27, '999', '8d4bae510248b84723d476020ee5c38d', NULL, NULL, NULL, '1', '2020-03-19 12:46:06');
-INSERT INTO `user` VALUES (28, '666', '8d4bae510248b84723d476020ee5c38d', NULL, NULL, NULL, '1', '2020-03-19 12:47:46');
-INSERT INTO `user` VALUES (29, '小一', '8d4bae510248b84723d476020ee5c38d', NULL, NULL, NULL, '1', '2020-03-19 13:42:39');
-INSERT INTO `user` VALUES (30, '1', '8d4bae510248b84723d476020ee5c38d', NULL, NULL, NULL, '1', '2020-03-19 14:52:02');
-INSERT INTO `user` VALUES (31, '啦啦啦啦啦啦', '12bf5a431554b14fd297ab765cddb568', NULL, NULL, NULL, '1', '2020-03-19 14:58:36');
-INSERT INTO `user` VALUES (32, '呼呼呼', '8d4bae510248b84723d476020ee5c38d', NULL, NULL, NULL, '1', '2020-03-19 14:59:16');
-INSERT INTO `user` VALUES (33, '大阳', '8d4bae510248b84723d476020ee5c38d', NULL, NULL, NULL, '1', '2020-03-19 15:07:48');
-INSERT INTO `user` VALUES (34, '嘤嘤嘤', '8d4bae510248b84723d476020ee5c38d', NULL, NULL, NULL, '1', '2020-03-19 15:09:48');
-INSERT INTO `user` VALUES (35, '哭唧唧', '8d4bae510248b84723d476020ee5c38d', NULL, NULL, NULL, '1', '2020-03-19 15:11:16');
+INSERT INTO `user` VALUES (3, '李小艺', '8d4bae510248b84723d476020ee5c38d', '女', '2020-03-17', NULL, '2', '2020-03-14 15:27:01');
+INSERT INTO `user` VALUES (4, '李大艺', '8d4bae510248b84723d476020ee5c38d', '女', '2020-03-17', NULL, '1', '2020-03-14 15:31:48');
+INSERT INTO `user` VALUES (16, '杨小贺', '8d4bae510248b84723d476020ee5c38d', '男', '2020-03-17', NULL, '1', '2020-03-16 15:27:11');
+INSERT INTO `user` VALUES (18, '李1', '8d4bae510248b84723d476020ee5c38d', '女', '2020-03-17', '呼呼呼呼', '1', '2020-03-18 13:08:35');
+INSERT INTO `user` VALUES (24, '李2', '8d4bae510248b84723d476020ee5c38d', '女', '2020-03-17', '', '1', '2020-03-19 10:45:44');
+INSERT INTO `user` VALUES (27, '李3', '8d4bae510248b84723d476020ee5c38d', '女', '2020-03-17', NULL, '1', '2020-03-19 12:46:06');
+INSERT INTO `user` VALUES (28, '李4', '8d4bae510248b84723d476020ee5c38d', '女', '2020-03-17', NULL, '1', '2020-03-19 12:47:46');
+INSERT INTO `user` VALUES (29, '李5', '8d4bae510248b84723d476020ee5c38d', '女', '2020-03-17', NULL, '1', '2020-03-19 13:42:39');
+INSERT INTO `user` VALUES (30, '李6', '8d4bae510248b84723d476020ee5c38d', '女', '2020-03-17', NULL, '1', '2020-03-19 14:52:02');
+INSERT INTO `user` VALUES (31, '李7', '8d4bae510248b84723d476020ee5c38d', '女', '2020-03-17', NULL, '1', '2020-03-19 14:58:36');
+INSERT INTO `user` VALUES (32, '李8', '8d4bae510248b84723d476020ee5c38d', '女', '2020-03-17', NULL, '1', '2020-03-19 14:59:16');
+INSERT INTO `user` VALUES (33, '李9', '8d4bae510248b84723d476020ee5c38d', '女', '2020-03-17', NULL, '1', '2020-03-19 15:07:48');
+INSERT INTO `user` VALUES (34, '李10', '8d4bae510248b84723d476020ee5c38d', '女', '2020-03-17', NULL, '1', '2020-03-19 15:09:48');
+INSERT INTO `user` VALUES (35, '李11', '8d4bae510248b84723d476020ee5c38d', '女', '2020-03-17', NULL, '1', '2020-03-19 15:11:16');
 
 SET FOREIGN_KEY_CHECKS = 1;
